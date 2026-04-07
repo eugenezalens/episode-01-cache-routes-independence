@@ -16,12 +16,12 @@ export type TCommentCardProps = {
   slots?: {
     openDetailsAction?: ComponentType<TOpenCommentDetailsActionProps>
   }
-  slotsProps?: {
+  slotProps?: {
     openDetailsAction?: Omit<TOpenCommentDetailsActionProps, 'id'>
   }
 }
 
-export function CommentCard({ titleLevel, comment, cardVariant, slots, slotsProps, children }: TCommentCardProps) {
+export function CommentCard({ titleLevel, comment, cardVariant, slots, slotProps, children }: TCommentCardProps) {
   const OpenDetailsAction = slots?.openDetailsAction
 
   return (
@@ -31,7 +31,7 @@ export function CommentCard({ titleLevel, comment, cardVariant, slots, slotsProp
 
         {slots && (
           <CardActions>
-            {OpenDetailsAction && <OpenDetailsAction {...slotsProps?.openDetailsAction} id={comment.id} />}
+            {OpenDetailsAction && <OpenDetailsAction {...slotProps?.openDetailsAction} id={comment.id} />}
           </CardActions>
         )}
       </CardHeader>

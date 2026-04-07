@@ -37,7 +37,7 @@ type TPaginationExclusiveSlotConfig<
 > = {
   [TKey in keyof TSlotMap]: {
     slots: { [TInnerKey in TKey]: TSlotMap[TInnerKey] } & TExclusiveOptionalKeys<Exclude<keyof TSlotMap, TKey>>
-    slotsProps?: { [TInnerKey in TKey]?: TSlotPropsMap[TInnerKey] } & TExclusiveOptionalKeys<
+    slotProps?: { [TInnerKey in TKey]?: TSlotPropsMap[TInnerKey] } & TExclusiveOptionalKeys<
       Exclude<keyof TSlotMap, TKey>
     >
   }

@@ -18,13 +18,13 @@ export type TPostCardProps = {
     openDetailsAction?: ComponentType<TOpenPostDetailsActionProps>
     openPostEditingAction?: ComponentType<TOpenPostEditingActionProps>
   }
-  slotsProps?: {
+  slotProps?: {
     openDetailsAction?: Omit<TOpenPostDetailsActionProps, 'id'>
     openPostEditingAction?: Omit<TOpenPostEditingActionProps, 'id'>
   }
 }
 
-export function PostCard({ titleLevel, post, cardVariant, slots, slotsProps, children }: TPostCardProps) {
+export function PostCard({ titleLevel, post, cardVariant, slots, slotProps, children }: TPostCardProps) {
   const OpenDetailsAction = slots?.openDetailsAction
   const OpenPostEditingAction = slots?.openPostEditingAction
 
@@ -35,8 +35,8 @@ export function PostCard({ titleLevel, post, cardVariant, slots, slotsProps, chi
 
         {slots && (
           <CardActions>
-            {OpenDetailsAction && <OpenDetailsAction {...slotsProps?.openDetailsAction} id={post.id} />}
-            {OpenPostEditingAction && <OpenPostEditingAction {...slotsProps?.openPostEditingAction} id={post.id} />}
+            {OpenDetailsAction && <OpenDetailsAction {...slotProps?.openDetailsAction} id={post.id} />}
+            {OpenPostEditingAction && <OpenPostEditingAction {...slotProps?.openPostEditingAction} id={post.id} />}
           </CardActions>
         )}
       </CardHeader>

@@ -19,14 +19,14 @@ type TSlots = {
   callbackControl: ComponentType<TPaginationCallbackControlProps>
 }
 
-type TSlotsProps = {
+type TSlotProps = {
   routingControl: Omit<TPaginationRoutingControlProps, 'page' | 'href' | 'aria-label'>
   callbackControl: Omit<TPaginationCallbackControlProps, 'page' | 'aria-label'>
 }
 
-export type TPaginationNumbersProps = TPaginationExclusiveSlotConfig<TSlots, TSlotsProps>
+export type TPaginationNumbersProps = TPaginationExclusiveSlotConfig<TSlots, TSlotProps>
 
-export function PaginationNumbers({ slots, slotsProps }: TPaginationNumbersProps) {
+export function PaginationNumbers({ slots, slotProps }: TPaginationNumbersProps) {
   const { isLoading, isPending, paginationRange, currentPage, createPageUrl } = usePaginationContext()
 
   const showSkeleton = useDelayedLoading(isLoading || isPending)
@@ -51,7 +51,7 @@ export function PaginationNumbers({ slots, slotsProps }: TPaginationNumbersProps
           <li key={item.id}>
             {RoutingControl && (
               <RoutingControl
-                {...slotsProps?.routingControl}
+                {...slotProps?.routingControl}
                 page={item.value}
                 skeleton={showSkeleton ? <PaginationControlSkeleton isActive={isActive} /> : null}
                 href={createPageUrl(item.value)}
@@ -62,7 +62,7 @@ export function PaginationNumbers({ slots, slotsProps }: TPaginationNumbersProps
 
             {CallbackControl && (
               <CallbackControl
-                {...slotsProps?.callbackControl}
+                {...slotProps?.callbackControl}
                 page={item.value}
                 skeleton={showSkeleton ? <PaginationControlSkeleton isActive={isActive} /> : null}
               >

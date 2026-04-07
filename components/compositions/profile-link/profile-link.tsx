@@ -11,17 +11,17 @@ export type TProfileLinkProps = {
   slots: {
     icon: ComponentType<TGithubIconProps> | ComponentType<TLinkedinIconProps> | ComponentType<TYoutubeIconProps>
   }
-  slotsProps?: {
+  slotProps?: {
     icon?: Omit<TGithubIconProps | TLinkedinIconProps | TYoutubeIconProps, 'width' | 'height' | 'priority'>
   }
 }
 
-export function ProfileLink({ href, ariaLabel, slots, slotsProps }: TProfileLinkProps) {
+export function ProfileLink({ href, ariaLabel, slots, slotProps }: TProfileLinkProps) {
   const Icon = slots.icon
 
   return (
     <ActionIconLink href={href} target="_blank" rel="noopener noreferrer" aria-label={ariaLabel}>
-      <Icon {...slotsProps?.icon} width={32} height={32} priority />
+      <Icon {...slotProps?.icon} width={32} height={32} priority />
     </ActionIconLink>
   )
 }

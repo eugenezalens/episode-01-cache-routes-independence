@@ -9,18 +9,18 @@ export type TFormFieldErrorsProps = {
   slots?: {
     error?: ComponentType<TFormFieldErrorProps>
   }
-  slotsProps?: {
+  slotProps?: {
     error?: TFormFieldErrorProps
   }
 } & Omit<ComponentPropsWithoutRef<'div'>, 'children'>
 
-export function FormFieldErrors({ errorList = [], slots, slotsProps, className, ...props }: TFormFieldErrorsProps) {
+export function FormFieldErrors({ errorList = [], slots, slotProps, className, ...props }: TFormFieldErrorsProps) {
   const Error = slots?.error ?? FormFieldError
 
   return (
     <div className={cn('flex flex-col gap-sm', className)} {...props}>
       {errorList.map((error, index) => (
-        <Error {...slotsProps?.error} key={index}>
+        <Error {...slotProps?.error} key={index}>
           {error}
         </Error>
       ))}

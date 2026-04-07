@@ -19,7 +19,7 @@ export function PaginationCallbackBased({ meta, isLoading, onPageChange }: TPagi
           slots={{
             callbackControl: PaginationCallbackControl,
           }}
-          slotsProps={{
+          slotProps={{
             callbackControl: { onPageChange },
           }}
         />
@@ -28,7 +28,7 @@ export function PaginationCallbackBased({ meta, isLoading, onPageChange }: TPagi
           slots={{
             callbackControl: PaginationCallbackControl,
           }}
-          slotsProps={{
+          slotProps={{
             callbackControl: { onPageChange },
           }}
         />
@@ -37,7 +37,7 @@ export function PaginationCallbackBased({ meta, isLoading, onPageChange }: TPagi
           slots={{
             callbackControl: PaginationCallbackControl,
           }}
-          slotsProps={{
+          slotProps={{
             callbackControl: { onPageChange },
           }}
         />

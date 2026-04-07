@@ -20,12 +20,12 @@ export type TUserCardProps = {
   slots?: {
     openDetailsAction?: ComponentType<TOpenUserDetailsActionProps>
   }
-  slotsProps?: {
+  slotProps?: {
     openDetailsAction?: Omit<TOpenUserDetailsActionProps, 'id'>
   }
 }
 
-export function UserCard({ titleLevel, user, slots, slotsProps }: TUserCardProps) {
+export function UserCard({ titleLevel, user, slots, slotProps }: TUserCardProps) {
   const OpenDetailsAction = slots?.openDetailsAction
 
   return (
@@ -46,7 +46,7 @@ export function UserCard({ titleLevel, user, slots, slotsProps }: TUserCardProps
 
           {slots && (
             <CardActions className="justify-self-end">
-              {OpenDetailsAction && <OpenDetailsAction {...slotsProps?.openDetailsAction} id={user.id} />}
+              {OpenDetailsAction && <OpenDetailsAction {...slotProps?.openDetailsAction} id={user.id} />}
             </CardActions>
           )}
         </div>

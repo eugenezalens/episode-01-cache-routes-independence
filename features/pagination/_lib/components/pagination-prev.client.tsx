@@ -17,14 +17,14 @@ type TSlots = {
   callbackControl: ComponentType<TPaginationCallbackControlProps>
 }
 
-type TSlotsProps = {
+type TSlotProps = {
   routingControl: Omit<TPaginationRoutingControlProps, 'page' | 'href' | 'aria-label'>
   callbackControl: Omit<TPaginationCallbackControlProps, 'page' | 'aria-label'>
 }
 
-export type TPaginationPrevProps = TPaginationExclusiveSlotConfig<TSlots, TSlotsProps>
+export type TPaginationPrevProps = TPaginationExclusiveSlotConfig<TSlots, TSlotProps>
 
-export function PaginationPrev({ slots, slotsProps }: TPaginationPrevProps) {
+export function PaginationPrev({ slots, slotProps }: TPaginationPrevProps) {
   const { isLoading, isPending, currentPage, hasPrevPage, createPageUrl } = usePaginationContext()
 
   const showSkeleton = useDelayedLoading(isLoading || isPending)
@@ -37,7 +37,7 @@ export function PaginationPrev({ slots, slotsProps }: TPaginationPrevProps) {
     <li>
       {RoutingControl && (
         <RoutingControl
-          {...slotsProps?.routingControl}
+          {...slotProps?.routingControl}
           page={prevPage}
           skeleton={showSkeleton ? <PaginationControlSkeleton isActive /> : null}
           isDisabled={!hasPrevPage}
@@ -49,7 +49,7 @@ export function PaginationPrev({ slots, slotsProps }: TPaginationPrevProps) {
 
       {CallbackControl && (
         <CallbackControl
-          {...slotsProps?.callbackControl}
+          {...slotProps?.callbackControl}
           page={prevPage}
           skeleton={showSkeleton ? <PaginationControlSkeleton isActive /> : null}
           isDisabled={!hasPrevPage}
