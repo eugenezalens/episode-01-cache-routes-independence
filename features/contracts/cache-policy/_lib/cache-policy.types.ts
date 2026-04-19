@@ -1,8 +1,8 @@
-import { type TCacheBuilderConfig } from '@/core/api'
+import { type TServerCacheConfig } from '@/core/api'
 
 type TCachePolicySelector<TBaseParamList extends unknown[] = [], TConfigParamList extends unknown[] = []> = {
   getBaseTag: (...paramList: TBaseParamList) => string
-  getCacheConfig: (...paramList: TConfigParamList) => TCacheBuilderConfig
+  getCacheConfig: (...paramList: TConfigParamList) => TServerCacheConfig
 }
 
 export type TBaseCachePolicy = TCachePolicySelector

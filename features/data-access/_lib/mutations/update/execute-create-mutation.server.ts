@@ -2,7 +2,7 @@ import 'server-only'
 
 import { updateTag } from 'next/cache'
 
-import { sendPutRequest } from '@/core/api/server'
+import { CoreApi, createRequestContext, resolveUpstreamAuth } from '@/core/api/server'
 
 import { type TUpdateMutationExecuteRequest } from './update-mutation.types'
 
@@ -14,9 +14,16 @@ export async function executeUpdateMutation<TEntity = unknown>({
 }: TUpdateMutationExecuteRequest): Promise<{
   data: TEntity
 }> {
-  const result = await sendPutRequest<TEntity>({
-    path: endpoints.mutations.update.getPath(params.id),
+  const auth = await resolveUpstreamAuth()
+  const context = createRequestContext()
+
+  const result = await CoreApi.PUT<TEntity>({
+    url: {
+      path: endpoints.mutations.update.getPath(params.id),
+    },
     body: payload,
+    auth,
+    context,
   })
 
   updateTag(cachePolicy.list.getBaseTag())

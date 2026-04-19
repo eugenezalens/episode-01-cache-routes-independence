@@ -1,7 +1,8 @@
 import 'server-only'
+
 import { updateTag } from 'next/cache'
 
-import { sendPostRequest } from '@/core/api/server'
+import { CoreApi, createRequestContext, resolveUpstreamAuth } from '@/core/api/server'
 
 import { type TCreateMutationExecuteRequest } from './create-mutation.types'
 
@@ -12,9 +13,16 @@ export async function executeCreateMutation<TEntity = unknown>({
 }: TCreateMutationExecuteRequest): Promise<{
   data: TEntity
 }> {
-  const result = await sendPostRequest<TEntity>({
-    path: endpoints.mutations.create.getPath(),
+  const auth = await resolveUpstreamAuth()
+  const context = createRequestContext()
+
+  const result = await CoreApi.POST<TEntity>({
+    url: {
+      path: endpoints.mutations.create.getPath(),
+    },
     body: payload,
+    auth,
+    context,
   })
 
   updateTag(cachePolicy.list.getBaseTag())

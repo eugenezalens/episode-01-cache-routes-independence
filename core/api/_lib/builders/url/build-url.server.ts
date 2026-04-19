@@ -2,9 +2,9 @@ import 'server-only'
 
 import { getApiOrigin } from '@/core/env/server'
 
-import { type TUrlBuilderConfig } from '../api.types'
+import { type TUrlConfig } from './url.types'
 
-export function buildUrl(config: TUrlBuilderConfig): URL {
+export function buildUrl(config: TUrlConfig): URL {
   const url = new URL(config.path, getApiOrigin())
 
   if (config.searchParams) {

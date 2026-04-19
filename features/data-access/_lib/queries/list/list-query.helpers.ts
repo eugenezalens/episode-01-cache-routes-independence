@@ -1,4 +1,4 @@
-import { type TCacheBuilderConfig } from '@/core/api'
+import { type TServerCacheConfig } from '@/core/api'
 import { type TCachePolicy } from '@/features/contracts'
 import { appendSpNumberList, getSpNumberList, setSpPagination, setSpParams } from '@/helpers/sp'
 
@@ -23,7 +23,7 @@ function buildSp(params?: TListQueryRequestParams): URLSearchParams {
   return searchParams
 }
 
-function getCachePolicy(searchParams: URLSearchParams, cachePolicy: TCachePolicy): TCacheBuilderConfig {
+function getCachePolicy(searchParams: URLSearchParams, cachePolicy: TCachePolicy): TServerCacheConfig {
   const idList = getSpNumberList(searchParams, 'id')
 
   const hasSelection = idList.length > 0

@@ -1,6 +1,6 @@
 import 'server-only'
 
-import { sendGetRequest } from '@/core/api/server'
+import { CoreApi, createRequestContext, resolveUpstreamAuth } from '@/core/api/server'
 
 import { ListQueryHelpers } from './list-query.helpers'
 import { type TListQueryExecuteRequest } from './list-query.types'
@@ -11,10 +11,17 @@ export async function executeListQuery<TEntity = unknown>(
 ): Promise<TPaginatedApiEnvelope<TEntity>> {
   const { endpoints, searchParams } = config
 
-  const result = await sendGetRequest<TEntity[]>({
-    path: endpoints.queries.list.getPath(),
-    searchParams,
+  const auth = await resolveUpstreamAuth()
+  const context = createRequestContext()
+
+  const result = await CoreApi.GET<TEntity[]>({
+    url: {
+      path: endpoints.queries.list.getPath(),
+      searchParams,
+    },
     cache: ListQueryHelpers.getCachePolicy(searchParams, config.cachePolicy),
+    auth,
+    context,
   })
 
   return {

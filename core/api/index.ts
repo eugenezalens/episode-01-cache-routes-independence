@@ -1,5 +1,12 @@
-export type { TApiResult, TCacheBuilderConfig } from './_lib/api.types'
+export type { TApiResult } from './_lib/types/api.types'
+export type { TServerCacheConfig } from './_lib/builders/request/base/build-cache-request-init.types'
 
-export type { TGetRequestConfig } from './_lib/methods/get/get-method.types'
-export type { TPostRequestConfig } from './_lib/methods/post/post-method.types'
-export type { TPutRequestConfig } from './_lib/methods/put/put-method.types'
+export type { TServerAuthContext } from './_lib/auth/apply-auth.types'
+export type { TRequestContext } from './_lib/request-context/request-context.types'
+
+export type {
+  TGetRequestConfig,
+  TPostRequestConfig,
+  TPutRequestConfig,
+  TDeleteRequestConfig,
+} from './_lib/methods/methods.types'

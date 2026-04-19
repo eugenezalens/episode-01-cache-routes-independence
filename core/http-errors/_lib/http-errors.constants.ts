@@ -2,6 +2,7 @@ export const HttpErrorCodes = {
   notFound: 'NOT_FOUND',
   badRequest: 'BAD_REQUEST',
   unauthorized: 'UNAUTHORIZED',
+  forbidden: 'FORBIDDEN',
   upstream: 'UPSTREAM_ERROR',
 } as const
 
