@@ -1,6 +1,7 @@
 export { POSTS_MODULE_KEY } from './_lib/constants/posts.constants'
 
 export type { IPost } from './_lib/models/posts.models'
+export type { TPostApiEnvelope, TPostListApiEnvelope } from './_lib/api/queries/posts-queries.types'
 
 export { PostsRoutes } from './_lib/contracts/posts-routes.contract'
 export { PostsCachePolicy } from './_lib/contracts/posts-cache-policy.contract'

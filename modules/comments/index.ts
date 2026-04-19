@@ -1,6 +1,7 @@
 export { COMMENTS_MODULE_KEY } from './_lib/constants/comments.constants'
 
 export type { IComment } from './_lib/models/comments.models'
+export type { TCommentApiEnvelope, TCommentListApiEnvelope } from './_lib/api/queries/comments-queries.types'
 
 export { CommentsRoutes } from './_lib/contracts/comments-routes.contract'
 export { CommentsCachePolicy } from './_lib/contracts/comments-cache-policy.contract'

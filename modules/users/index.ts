@@ -1,6 +1,7 @@
 export { USERS_MODULE_KEY } from './_lib/constants/users.constants'
 
 export type { IUser, IUserCompany, IUserAddress } from './_lib/models/users.models'
+export type { TUserApiEnvelope, TUserListApiEnvelope } from './_lib/api/queries/users-queries.types'
 
 export { UsersRoutes } from './_lib/contracts/users-routes.contract'
 export { UsersCachePolicy } from './_lib/contracts/users-cache-policy.contract'
