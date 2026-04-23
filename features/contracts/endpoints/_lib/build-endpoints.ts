@@ -10,6 +10,7 @@ export function buildEndpoints({ entity }: TEndpointsConfig): TEndpoints {
     mutations: {
       create: EndpointsHelpers.mutations.buildCreate(entity),
       update: EndpointsHelpers.mutations.buildUpdate(entity),
+      delete: EndpointsHelpers.mutations.buildDelete(entity),
     },
   }
 

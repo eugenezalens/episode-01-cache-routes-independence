@@ -3,6 +3,7 @@ import {
   type TMutationCreateEndpoint,
   type TQueryByIdEndpoint,
   type TQueryListEndpoint,
+  type TMutationDeleteEndpoint,
 } from './endpoints.types'
 
 function createBffPath(entity: string): string {
@@ -35,6 +36,12 @@ function buildMutationUpdateEndpoint(entity: string): TMutationUpdateEndpoint {
   }
 }
 
+function buildMutationDeleteEndpoint(entity: string): TMutationDeleteEndpoint {
+  return {
+    getPath: (id) => `/${entity}/${id}`,
+  }
+}
+
 export const EndpointsHelpers = {
   queries: {
     buildList: buildQueryListEndpoint,
@@ -43,5 +50,6 @@ export const EndpointsHelpers = {
   mutations: {
     buildCreate: buildMutationCreateEndpoint,
     buildUpdate: buildMutationUpdateEndpoint,
+    buildDelete: buildMutationDeleteEndpoint,
   },
 } as const

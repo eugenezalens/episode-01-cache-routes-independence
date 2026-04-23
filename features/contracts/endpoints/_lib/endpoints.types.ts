@@ -19,9 +19,14 @@ export type TMutationUpdateEndpoint = {
   getPath: (id: number) => string
 }
 
+export type TMutationDeleteEndpoint = {
+  getPath: (id: number) => string
+}
+
 export type TMutationEndpoints = {
   create: TMutationCreateEndpoint
   update: TMutationUpdateEndpoint
+  delete: TMutationDeleteEndpoint
 }
 
 export type TEndpointsConfig = {
