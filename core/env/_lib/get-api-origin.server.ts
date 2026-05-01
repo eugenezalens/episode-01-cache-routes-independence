@@ -1,7 +1,7 @@
 import 'server-only'
 
-import { env } from './env'
+import { getServerEnv } from './env'
 
 export function getApiOrigin(): string {
-  return env.API_ORIGIN
+  return getServerEnv().API_ORIGIN
 }
